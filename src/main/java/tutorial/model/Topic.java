@@ -1,54 +1,25 @@
 package tutorial.model;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Topic implements Serializable {
-
-    private static final long serialVersionUID = -1722083052479276312L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private User user;
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn
-//    private Section section;
-
-    @Column(length = 50)
-    private String title;
-
-    @Column(columnDefinition = "TEXT")
-    private String content;
-
-    @Column
-    private int views;
-
-    @Column(updatable = false, nullable = false)
-    private Date creationDate;
-
-    @Column
-    private Date lastUpdateDate;
-
-    @Column
-    private boolean closed;
-
+@Table(name = "topics")
+public class Topic {
+    private @Id @GeneratedValue int id;
+    private @NotBlank User user;
+    private @NotBlank String title;
+    private @NotBlank String content;
+    private @NotBlank Date creationDate;
+    private @NotBlank Date lastUpdateDate;
+    
     public Topic() {
     }
 
@@ -103,14 +74,6 @@ public class Topic implements Serializable {
         this.content = content;
     }
 
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
-
     public Date getCreationDate() {
         return creationDate;
     }
@@ -119,19 +82,19 @@ public class Topic implements Serializable {
         return lastUpdateDate;
     }
 
-    public boolean isClosed() {
-        return closed;
-    }
-
-    public void setClosed(boolean closed) {
-        this.closed = closed;
-    }
+//    public boolean isClosed() {
+//        return closed;
+//    }
+//
+//    public void setClosed(boolean closed) {
+//        this.closed = closed;
+//    }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (closed ? 1231 : 1237);
+//        result = prime * result + (closed ? 1231 : 1237);
         result = prime * result + ((content == null) ? 0 : content.hashCode());
         result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
         result = prime * result + id;
@@ -139,7 +102,6 @@ public class Topic implements Serializable {
 //        result = prime * result + ((section == null) ? 0 : section.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((user == null) ? 0 : user.hashCode());
-        result = prime * result + views;
         return result;
     }
 
@@ -155,9 +117,9 @@ public class Topic implements Serializable {
             return false;
         }
         Topic other = (Topic) obj;
-        if (closed != other.closed) {
-            return false;
-        }
+//        if (closed != other.closed) {
+//            return false;
+//        }
         if (content == null) {
             if (other.content != null) {
                 return false;
@@ -203,9 +165,6 @@ public class Topic implements Serializable {
         } else if (!user.equals(other.user)) {
             return false;
         }
-        if (views != other.views) {
-            return false;
-        }
-        return true;
+		return false;
     }
 }

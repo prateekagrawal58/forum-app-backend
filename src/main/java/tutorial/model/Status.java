@@ -1,4 +1,4 @@
-package tutorial.status;
+package tutorial.model;
 
 public enum Status {
 	SUCCESS,

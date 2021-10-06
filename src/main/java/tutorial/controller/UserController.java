@@ -1,13 +1,11 @@
 package tutorial.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tutorial.model.User;
 import tutorial.repository.UserRepository;
-import tutorial.status.Status;
+import tutorial.model.Status;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -40,7 +38,7 @@ public class UserController {
             }
         }
         return Status.FAILURE;
-    }
+    }	
     @PostMapping("/users/logout")
     public Status logUserOut(@Valid @RequestBody User user) {
         List<User> users = userRepository.findAll();
