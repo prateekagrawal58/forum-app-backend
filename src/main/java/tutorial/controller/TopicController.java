@@ -20,17 +20,19 @@ public class TopicController {
 	
 	 @Autowired
 	 TopicRepository topicRepository;
-	 
+	 @GetMapping("{userId}")
 	 public List<Topic> getTopicByUserId(@Valid @PathVariable("userId") String userId){
 		 List<Topic> topics = topicRepository.findTopicById(Long.parseLong(userId));
 		return topics;
 	 }
 	 
+	 @GetMapping
 	 public List<Topic> getAllTopics(@Valid @RequestBody Topic topic){
 		 List<Topic> topics = topicRepository.findAll();
 		 return topics;
 	 }
 	 
+	 @PostMapping
 	 public Topic addTopic(@RequestBody Topic topic) {
 		 Topic addTopic = topicRepository.save(topic);
 		 return addTopic;
