@@ -1,6 +1,5 @@
 package tutorial.model;
 
-//import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "topics")
 public class Topic {
     private @Id @GeneratedValue int id;
-    private @NotBlank User user;
+    private @NotBlank Long userId;
     private @NotBlank String title;
     private @NotBlank String content;
     private @NotBlank Date creationDate;
@@ -42,22 +41,12 @@ public class Topic {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-//    public Section getSection() {
-//        return section;
-//    }
-//
-//    public void setSection(Section section) {
-//        this.section = section;
-//    }
-
+    public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
     public String getTitle() {
         return title;
     }
@@ -82,26 +71,17 @@ public class Topic {
         return lastUpdateDate;
     }
 
-//    public boolean isClosed() {
-//        return closed;
-//    }
-//
-//    public void setClosed(boolean closed) {
-//        this.closed = closed;
-//    }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-//        result = prime * result + (closed ? 1231 : 1237);
         result = prime * result + ((content == null) ? 0 : content.hashCode());
         result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
         result = prime * result + id;
         result = prime * result + ((lastUpdateDate == null) ? 0 : lastUpdateDate.hashCode());
-//        result = prime * result + ((section == null) ? 0 : section.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
-        result = prime * result + ((user == null) ? 0 : user.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
     }
 
@@ -117,9 +97,7 @@ public class Topic {
             return false;
         }
         Topic other = (Topic) obj;
-//        if (closed != other.closed) {
-//            return false;
-//        }
+        
         if (content == null) {
             if (other.content != null) {
                 return false;
@@ -144,13 +122,7 @@ public class Topic {
         } else if (!lastUpdateDate.equals(other.lastUpdateDate)) {
             return false;
         }
-//        if (section == null) {
-//            if (other.section != null) {
-//                return false;
-//            }
-//        } else if (!section.equals(other.section)) {
-//            return false;
-//        }
+
         if (title == null) {
             if (other.title != null) {
                 return false;
@@ -158,11 +130,11 @@ public class Topic {
         } else if (!title.equals(other.title)) {
             return false;
         }
-        if (user == null) {
-            if (other.user != null) {
+        if (userId == null) {
+            if (other.userId != null) {
                 return false;
             }
-        } else if (!user.equals(other.user)) {
+        } else if (!userId.equals(other.userId)) {
             return false;
         }
 		return false;

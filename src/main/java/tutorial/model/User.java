@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;							
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
+
 @Entity
 @Table(name = "users")
 public class User {
