@@ -9,6 +9,6 @@ import tutorial.model.Topic;
 @Repository
 public interface TopicRepository extends JpaRepository<Topic, Long>{
 
-	List<Topic> findTopicById(long userId);
+	List<Topic> findByUserId(long userId);
 	
 }

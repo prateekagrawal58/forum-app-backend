@@ -3,14 +3,12 @@ package tutorial.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import tutorial.dto.ApiResponse;
 import tutorial.model.Comment;
-import tutorial.model.Topic;
-import tutorial.repository.CommentRepository;
-import tutorial.repository.UserRepository;
-import tutorial.model.Status;
-import tutorial.model.User;
+import tutorial.service.CommentService;
+import tutorial.util.StatusBuilder;
+
 import javax.validation.Valid;
-import java.util.List;
 
 
 @CrossOrigin
@@ -18,24 +16,34 @@ import java.util.List;
 @RequestMapping("/comments")
 public class CommentController {
 	@Autowired
-    CommentRepository commentRepository;
-	@GetMapping("{topicId}")
+	CommentService commentService;
 
-	public List<Comment> getComment(@Valid @PathVariable("topicId") String topicId) {
-	List<Comment> comments = commentRepository.findByTopicId(Long.parseLong(topicId));
+	@GetMapping("/{TopicId}")
+	public ApiResponse getComment(@Valid @PathVariable("topicId") String topicId) {
+		StatusBuilder statusBuilder = new StatusBuilder();
+		ApiResponse apiResponse;
+		try {
+			Object data = commentService.getComment(topicId);
+			apiResponse = statusBuilder.Status(data, "Getting topic");
+		} catch (Exception e) {
+			apiResponse = statusBuilder.Error("Exception occured.");
+		}
 		
-//		for (Comment comment : comments) {
-//			if(comment.equals(newComment)) {
-//				System.out.println("Getting the Comment");
-//				return comments;			
-//			}
-//		}
-			return comments;
+		return apiResponse;
 	}
 	
-	@PostMapping
-	public Comment addComment(@Valid @RequestBody Comment comment) {
-		Comment comments = commentRepository.save(comment);
-		return comments;
-	}	
+	@PostMapping("/add")
+	public ApiResponse addComment(@Valid @RequestBody Comment comment) {
+		StatusBuilder statusBuilder = new StatusBuilder();
+		ApiResponse apiResponse;
+		try {
+			Object data = commentService.addComment(comment);
+			apiResponse = statusBuilder.Status(data, "Comment Added.");
+		} catch (Exception e) {
+			apiResponse = statusBuilder.Error("Exception occured.");
+		}
+		
+		return apiResponse;
+	}
 }
+

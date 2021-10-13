@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "topics")
 public class Topic {
-    private @Id @GeneratedValue int id;
+    private @Id @GeneratedValue Long id;
     private @NotBlank Long userId;
     private @NotBlank String title;
     private @NotBlank String content;
@@ -33,11 +33,11 @@ public class Topic {
         this.lastUpdateDate = new Date();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -74,15 +74,15 @@ public class Topic {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
+        final long prime = 31;
+        long result = 1;
         result = prime * result + ((content == null) ? 0 : content.hashCode());
         result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
         result = prime * result + id;
         result = prime * result + ((lastUpdateDate == null) ? 0 : lastUpdateDate.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-        return result;
+        return (int)result;
     }
 
     @Override
