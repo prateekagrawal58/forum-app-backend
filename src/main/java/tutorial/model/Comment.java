@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "comments")
 public class Comment {
 	private @Id @GeneratedValue Long id;
-	private @NotBlank User user;
+//	private @NotBlank User user;
 	private  @NotBlank String description;
 	private  @NotBlank Long topicId;
 	private  @NotBlank Long userId;
@@ -20,12 +20,6 @@ public class Comment {
 	}
 	public Comment(@NotBlank String description) {
 		this.description = description;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
 	}
 	public Long getId() {
 		return id;

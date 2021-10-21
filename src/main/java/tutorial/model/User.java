@@ -1,19 +1,39 @@
 package tutorial.model;
 	
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;							
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "users")
 public class User {
-    private @Id @GeneratedValue long id;
-    private @NotBlank String username;
-    private @NotBlank String password;
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty
+	private long id;
+    
     private @NotBlank boolean loggedIn;
+    
+    @Column(nullable = false, unique = true)
+	@JsonProperty
+	private String username;
+
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@Column(nullable = false)
+	private String password;
+	
+	
+	
+	
     public User() {
     }
     public User(@NotBlank String username, 

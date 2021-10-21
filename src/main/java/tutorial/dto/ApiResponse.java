@@ -1,5 +1,5 @@
 package tutorial.dto;
-
+	
 public class ApiResponse {
 
 	private String message;
@@ -14,3 +14,4 @@ public class ApiResponse {
 	
 
 }
+//Response entity

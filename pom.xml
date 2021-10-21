@@ -12,7 +12,7 @@
 	<artifactId>tutorial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tutorial</name>
-	<description>Basic user authentication application made using Spring and Spring Boot</description>
+	<description>Basic user authentication application using Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -53,13 +53,49 @@
     	<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-    	</dependency>
+			</dependency>
+    	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+		<dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-test</artifactId>
+		</dependency>
     	<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.2.32</version>
     	</dependency>
+    	<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.auth0</groupId>
+    <artifactId>java-jwt</artifactId>
+    <version>3.11.0</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+<dependency>
+    <groupId>com.auth0</groupId>
+    <artifactId>java-jwt</artifactId>
+    <version>3.18.2</version>
+</dependency>
+
+<dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<scope>runtime</scope>
+</dependency>
 	</dependencies>
 
 	<build>

@@ -3,11 +3,13 @@ package tutorial.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tutorial.model.Topic;
 import tutorial.repository.TopicRepository;
 
+@Service
 public class TopicService {
 	@Autowired
 	 TopicRepository topicRepository;
@@ -18,6 +20,7 @@ public class TopicService {
 	 
 	 public List<Topic> getAllTopics(){
 		 List<Topic> topics = topicRepository.findAll();
+		 //
 		 System.out.println("Topics Found!");
 		 return topics;
 	 }
