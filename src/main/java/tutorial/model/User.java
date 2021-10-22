@@ -21,6 +21,7 @@ public class User {
 	@JsonProperty
 	private long id;
     
+//    private boolean loggedIn;
     private @NotBlank boolean loggedIn;
     
     @Column(nullable = false, unique = true)
@@ -36,14 +37,17 @@ public class User {
 	
     public User() {
     }
-    public User(@NotBlank String username, 
-                @NotBlank String password) {
-        this.username = username;
-        this.password = password;
-        this.loggedIn = false;
-    }
+//    public User(@NotBlank String username, 
+//                @NotBlank String password) {
+//        this.username = username;
+//        this.password = password;
+//        this.loggedIn = false;
+//    }
     public long getId() {
         return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getUsername() {
         return username;
@@ -62,27 +66,5 @@ public class User {
     }
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, 
-                            loggedIn);
-    }
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", loggedIn=" + loggedIn +
-                '}';
     }
 }

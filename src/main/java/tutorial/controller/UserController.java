@@ -17,8 +17,8 @@ public class UserController {
     @Autowired
     UserService userService;
 //Response Entity Utility: Body, Header,  HTTP Status Code
-    @PostMapping("/register")
-    public ResponseEntity<Object> registerUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
+    @PostMapping(value = "/register")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
     	StatusBuilder statusBuilder = new StatusBuilder();
 		ApiResponse apiResponse;
 		try {

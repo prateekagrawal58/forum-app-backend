@@ -29,7 +29,7 @@ public class UserService {
 		User userFound = userRepository.findByUsername(user.getUsername());
 		
 		
-		if( user.getPassword().equals(userFound.getPassword())) {
+		if( bCryptPasswordEncoder.matches(user.getPassword(), userFound.getPassword()) ) {
 			return userFound;
 		}
 		else {
@@ -70,6 +70,7 @@ public class UserService {
 //			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
+		user.setLoggedIn(true);
 		User newUser = userRepository.save(user);
 		return newUser;
 //		return ResponseEntity.ok(user);
