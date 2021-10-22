@@ -1,5 +1,4 @@
 package tutorial.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +25,7 @@ public class CommentController {
 		ApiResponse apiResponse;
 		try {
 			Object data = commentService.getComment(topicId);
-			apiResponse = statusBuilder.Status(data, "Getting topic");
+			apiResponse = statusBuilder.Status(data, "Getting Comments!");
 			return new ResponseEntity<>(apiResponse, HttpStatus.OK);
 		} catch (Exception e) {
 			apiResponse = statusBuilder.Error("Exception occured.");

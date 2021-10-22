@@ -1,5 +1,4 @@
 package tutorial.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +25,7 @@ public class TopicController {
 				apiResponse = statusBuilder.Status(data, "Getting topic");
 				return new ResponseEntity<>(apiResponse, HttpStatus.OK);
 			} catch (Exception e) {
+				System.out.println(e.getMessage());
 				apiResponse = statusBuilder.Error("Exception occured.");
 				return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
